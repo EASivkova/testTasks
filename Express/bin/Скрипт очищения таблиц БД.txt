@@ -1,0 +1,15 @@
+delete from bundle
+
+delete from station
+
+delete from form_tr
+
+delete from transp
+
+delete from code_org
+
+delete from code_podr
+
+delete from privilege
+
+delete from direct

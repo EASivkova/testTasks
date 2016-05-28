@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Новости</title> 
+	<h:outputScript library="javascript" name="script/sheet.js" target="head"/>      
+	<h:outputStylesheet library="css" name="css/styles.css" target="body"/>	    
+</h:head>
+<h:body>  
+	<div class="pageHeading" style="width:99%; height: 50px; position: absolute; border: solid;">
+		НОВОСТИ
+    </div> 
+<h:form>
+    <div class="menuAndContent"> 
+		<div class="menu" style="width:200px; height: 90%; position: absolute; margin-top: 53px; border: solid;"> 
+			<h:panelGrid columns="1" style="width:100%" >
+				<h:commandButton action="#{newsBean.clearForm}" value="Все новости" style="width:100%" id="buttonList">
+					<f:ajax execute="buttonList" render="output" />
+				</h:commandButton>
+				<br />
+				<h:selectOneMenu value="#{newsBean.id_rubric}" valueChangeListener="#{newsBean.rubricChanged}" required="true" id="selectRubric">
+					<f:selectItems value="#{newsBean.listRubric}" var="rubric" itemLabel="#{rubric.name}" itemValue="#{newsBean.id_rubric}" />
+    				<f:ajax execute="selectType" render="output" />
+				</h:selectOneMenu>
+				<br />
+				<h:inputText value="#{newsBean.strDate}" id="txtDate" />
+				<h:commandButton action="#{newsBean.listNewsToDate}" value="Новости за дату" style="width:100%" id="buttonDate">
+					<f:ajax execute="buttonDate" render="output" />
+				</h:commandButton>
+				<br />
+				<h:commandButton action="#{newsBean.load}" value="Загрузить новости" style="width:100%" />
+				<h:outputText value="Список источников:" style="width:100%" />
+				<h:outputText value="- E1.ru" style="width:100%" />
+				<h:outputText value="- РИА-новости: Происшествия" style="width:100%" />
+			</h:panelGrid>	        
+		</div>    
+		<div class="content" style="width:80%; height: 90%; position: absolute; margin-top: 63px; margin-left: 213px; border: scrollbar; ">
+			<h:inputText value="#{newsBean.strSearch}" id="txtSearch" />
+			<h:commandButton action="#{newsBean.search}" value="Искать новости" id="buttonSearch">
+				<f:ajax execute="buttonSearch" render="output" />
+			</h:commandButton>
+			<br />
+			<br />
+			<h:panelGroup id="output" layout="block" rendered="true">
+				<h:dataTable id="grid" value="#{newsBean.newsList}" var="news">
+					<h:column>
+						<f:facet name="header">
+						<f:verbatim>Рубрика</f:verbatim>
+						</f:facet>
+						<h:outputText value="#{news.rubric}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+						<f:verbatim>Текст</f:verbatim>
+						</f:facet>
+						<h:outputText value="#{news.dat} - #{news.header} \n #{news.body}" />
+					</h:column>
+				</h:dataTable>
+			</h:panelGroup>
+		</div> 
+	</div>  
+</h:form>
+</h:body> 
+</html>
+

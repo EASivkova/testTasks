@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+	<import resource="classpath:datamodel-persistence-test.xml" />
+
+	<bean id="logDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:devDB;shoutdown=true;sql.syntax_ora=true" />
+		<property name="username" value="SA" />
+		<property name="password" value="" />
+	</bean>
+	
+	<jdbc:initialize-database data-source="logDataSource">
+	    <jdbc:script location="classpath:test-data/schema.sql" />
+	    <jdbc:script location="classpath:test-data/data.sql" />
+	</jdbc:initialize-database>
+
+</beans>

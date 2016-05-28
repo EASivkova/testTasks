@@ -1,0 +1,26 @@
+menuTop {
+	text-align: center;
+	color: #400040;
+	font-style: normal;
+	font-size: medium;
+	text-decoration: none;
+	font-family: Arial Cyr;
+	font-weight: normal
+}
+
+pageHeading {
+	text-align: center;
+	color: #400040;
+	font-style: normal;
+	font-size: x-large;
+	text-decoration: blink;
+	font-family: Georgia;
+	font-weight: bolder;
+	padding: 10px
+}
+
+DIV.pageHeading {
+	font-size: 8pt;
+	width: 100%;
+	padding: 10px
+}

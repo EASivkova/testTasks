@@ -1,0 +1,10 @@
+.project
+.settings
+.gitignore
+target
+.classpath
+.springBeans
+.svn
+*.class
+.factorypath
+*.log

@@ -1,0 +1,107 @@
+<!DOCTYPE html >
+<html ng-app="UserDirectoryApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список пользователей</title>
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+            div.row > div > div.row {
+                margin-bottom: 15px;
+            }
+            body {
+                padding-bottom: 50px;
+            }
+            div.top-header {
+                margin-bottom:100px;
+            }
+            div.modal-body {
+                background-color:white;
+            }
+            h3.page-header {
+                margin-top: 50px;
+            }
+            figure {
+                position: relative;
+            }
+            figure figcaption {
+                font-size: 22px;
+                color: #fff;
+                text-decoration: none;
+                bottom: 10px;
+                right: 20px;
+                position: absolute;
+                background-color: #000;
+            }
+			code {
+				white-space: pre-wrap;       /* css-3 */
+				white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+				white-space: -pre-wrap;      /* Opera 4-6 */
+				white-space: -o-pre-wrap;    /* Opera 7 */
+				word-wrap: break-word;       /* Internet Explorer 5.5+ */
+			}
+	</style>
+</head>
+<body ng-controller="PeopleCtrl">
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/angular.min.js"></script> 
+<script type="text/javascript" src="js/app.js"></script>
+<br>
+<br>
+<div class="container">
+<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">Редактировать</a>
+<table>
+    <tr>
+        <th width="225px">ФИО</th>
+        <th width="130px">Логин</th>
+    </tr>
+    <tr ng-repeat="u in Users">
+        <td>{{ u.fio }}</td>
+        <td>{{ u.login }}</td>
+    </tr>
+</table>
+<br>
+<form ng-submit="addPerson()">
+    <input type="text" ng-model="fioText" size="30" placeholder="ФИО">
+    <input type="text" ng-model="loginText" size="15" placeholder="Логин">
+    <input type="password" ng-model="passwordText" size="15" placeholder="Пароль">
+    <input class="btn-primary" type="submit" value="Добавить">
+</form>
+</div>
+
+<div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-header">
+        <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+	</div>
+	<div class="modal-body">
+	<form id="EditPeople" ng-submit="savePerson()">
+		<input name="EditPeople" value="1" type="hidden">
+		<table>
+	    <tr>
+	        <th width="225px">ФИО</th>
+	        <th width="130px">Логин</th>
+	        <th width="130px">Пароль</th>
+	        <th> </th>
+	    </tr>
+	    <tr ng-repeat="u in Users">
+	        <td><input name="fio" type="text" size="30" ng-model="u.fio" placeholder="ФИО"></td>
+	        <td><input name="login" type="text" size="15" ng-model="u.login" placeholder="Логин"></td>
+	        <td><input name="password" type="password" size="15" ng-model="u.password" placeholder="Пароль"></td>
+	        <td><button type="button" class="btn" id="{{ u.id }}" ng-click="deletePerson(u)">Удалить</button></td>
+	    </tr>
+		</table>
+		<br>
+		<button class="btn-primary" ng-click="savePeople()">Сохранить</button>
+		</form>
+	</div>
+	<div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Отмена</button>
+	</div>
+</div>
+
+</body>
+</html>
+

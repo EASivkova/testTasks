@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.collector.resume</groupId>
+    <artifactId>collector</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <name>COLLECTOR</name>
+    <description>Сбор и просмотр резюме</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <modules>
+        <module>collector-ear</module>
+        <module>collector-resume</module>
+    </modules>
+
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>1.0-beta-2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <xmlOutput>true</xmlOutput>
+                    <effort>Max</effort>
+                    <findbugsXmlOutput>true</findbugsXmlOutput>
+                    <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <linkXref>true</linkXref>
+                    <minimumTokens>100</minimumTokens>
+                    <targetJdk>1.5</targetJdk>
+                    <outputDirectory>./target</outputDirectory>
+                    <sourceEncoding>WINDOWS-1251</sourceEncoding>
+                    <rulesets>
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <ruleset>/rulesets/braces.xml</ruleset>
+                        <ruleset>/rulesets/clone.xml</ruleset>
+                        <ruleset>/rulesets/codesize.xml</ruleset>
+                        <ruleset>/rulesets/coupling.xml</ruleset>
+                        <ruleset>/rulesets/design.xml</ruleset>
+                        <ruleset>/rulesets/finalizers.xml</ruleset>
+                        <ruleset>/rulesets/imports.xml</ruleset>
+                        <ruleset>/rulesets/j2ee.xml</ruleset>
+                        <ruleset>/rulesets/javabeans.xml</ruleset>
+                        <ruleset>/rulesets/logging-jakarta-commons.xml</ruleset>
+                        <ruleset>/rulesets/logging-java.xml</ruleset>
+                        <ruleset>/rulesets/scratchpad.xml</ruleset>
+                        <ruleset>/rulesets/strictexception.xml</ruleset>
+                        <ruleset>/rulesets/strings.xml</ruleset>
+                        <ruleset>/rulesets/sunsecure.xml</ruleset>
+                        <ruleset>/rulesets/unusedcode.xml</ruleset>
+                    </rulesets>
+                    <format>xml</format>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <repository>
+	    	<id>java.net</id>
+	    	<url>https://maven.java.net/content/repositories/public/</url>
+		</repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+	    	<id>java.net</id>
+	    	<url>https://maven.java.net/content/repositories/public/</url>
+            <layout>default</layout>
+		</repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>codehaus-snapshot</id>
+            <name>Codehaus Snapshot Repository</name>
+            <url>http://snapshots.repository.codehaus.org</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
+

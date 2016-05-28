@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	   http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<import resource="classpath:datasourceContext.xml" />
+
+	<context:component-scan base-package="ru.collector.resume" />
+
+	<aop:aspectj-autoproxy />
+
+	<context:annotation-config />
+
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler"
+		lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<bean
+				class="org.springframework.jdbc.support.nativejdbc.WebSphereNativeJdbcExtractor" />
+		</property>
+	</bean>
+
+	<task:scheduler id="uploadScheduler" />
+
+	<task:scheduled-tasks scheduler="uploadScheduler">
+		<task:scheduled ref="collectorResumes" method="upload" cron="0 0 */1 * * *" />
+	</task:scheduled-tasks>
+
+	<bean id="collectorResumes" class="ru.collector.resume.CollectorResumes" init-method="initialize">
+		<property name="resumeDao" ref="resumeDao" />
+		<property name="root" value="http://rabota.e1.ru/api/v1/resumes/" />
+	</bean>
+
+	<bean class="ru.collector.resume.dao.ResumeDaoImpl" id="resumeDao" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory name="">
+  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+  <property name="hibernate.connection.password">P@ssw0rd</property>
+  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/vacancies</property>
+  <property name="hibernate.connection.username">postgres</property>
+  <property name="hibernate.default_schema">public</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="hibernate.current_session_context_class">thread</property>
+  <property name="hibernate.show_sql">false</property>
+  <property name="hibernate.c3p0.minPoolSize">5</property>
+  <property name="hibernate.c3p0.maxPoolSize">20</property>
+  <property name="hibernate.c3p0.timeout">1800</property>
+  <property name="hibernate.c3p0.max_statement">50</property>
+  <property name="hibernate.c3p0.min_size">5</property>
+  <property name="hibernate.c3p0.max_size">20</property>
+  <property name="hibernate.c3p0.max_statements">50</property>
+		<mapping class="vacancy.entities.City" />
+		<mapping class="vacancy.entities.Education" />
+		<mapping class="vacancy.entities.Employer" />
+		<mapping class="vacancy.entities.Employment" />
+		<mapping class="vacancy.entities.Profession" />
+		<mapping class="vacancy.entities.Shedule" />
+		<mapping class="vacancy.entities.Sphere" />
+		<mapping class="vacancy.entities.Vacancy" />
+	</session-factory>
+</hibernate-configuration>

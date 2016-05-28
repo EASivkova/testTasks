@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="productsPort" class="org.mockito.Mockito"
+		factory-method="mock" >
+      <constructor-arg index="0"
+			value="de.gmorling.jaxwsonspring.shop.products.ProductsPortType" />
+</bean>
+
+	<bean id="shopClient" class="de.gmorling.jaxwsonspring.ShopClient" />
+</beans>

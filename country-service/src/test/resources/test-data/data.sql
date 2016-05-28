@@ -1,0 +1,9 @@
+insert into CITY (id, country, capital, currency) values (1, 'США', 'Вашингтон', 'USD');
+insert into CITY (id, country, capital, currency) values (2, 'Великобритания', 'Лондон', 'GBP');
+insert into CITY (id, country, capital, currency) values (3, 'Белоруссия', 'Минск', 'BYR');
+insert into CITY (id, country, capital, currency) values (4, 'Болгария', 'София', 'BGN');
+insert into CITY (id, country, capital, currency) values (5, 'Дания', 'Копенгаген', 'DKK');
+insert into CITY (id, country, capital, currency) values (6, 'Франция', 'Париж', 'EUR');
+insert into CITY (id, country, capital, currency) values (7, 'Германия', 'Берлин', 'EUR');
+insert into CITY (id, country, capital, currency) values (8, 'Китай', 'Пекин', 'CNY');
+insert into CITY (id, country, capital, currency) values (9, 'Япония', 'Токио', 'JPY');

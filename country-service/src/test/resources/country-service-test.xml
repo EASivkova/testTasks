@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:ws="http://www.springframework.org/schema/web-services"
+	default-autowire="byName"
+	xsi:schemaLocation="http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<import resource="classpath:dataSource-test.xml" />
+
+	<context:component-scan base-package="ru.country.info" />
+	<ws:annotation-driven />
+
+	<ws:interceptors>
+		<bean id="loggingInterceptor"
+			class="org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor" />
+	</ws:interceptors>
+
+	<bean name="xmlProcessor" class="ru.country.info.xml.SimpleXMLProcessing" />
+
+    <bean id="locations" class="ru.gismeteo.ws.Locations" />
+
+    <bean id="weather" class="ru.gismeteo.ws.Weather" />
+
+	<bean id="serial" class="java.lang.String">
+		<constructor-arg value="a2db95e5-eb11-43b8-afba-0bf7639d1849" />
+	</bean>
+
+</beans>

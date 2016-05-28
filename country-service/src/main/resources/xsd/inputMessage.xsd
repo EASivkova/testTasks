@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="qualified"
+	targetNamespace="urn:country-input:v0.1">
+	<xsd:element name="CountryRequest">
+		<xsd:complexType>
+			<xsd:all maxOccurs="1" minOccurs="1">
+				<xsd:element name="name" type="xsd:string" />
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CountryResponse">
+		<xsd:complexType>
+			<xsd:all minOccurs="1" maxOccurs="1">
+				<xsd:element name="body">
+					<xsd:complexType>
+						<xsd:choice>
+							<xsd:element name="countryInfo">
+								<xsd:complexType>
+									<xsd:all minOccurs="1" maxOccurs="1">
+										<xsd:element name="courses">
+											<xsd:complexType>
+												<xsd:all minOccurs="1" maxOccurs="1">
+													<xsd:element name="vname" type="xsd:string" />
+													<xsd:element name="vnom" type="xsd:string" />
+													<xsd:element name="vcurs" type="xsd:string" />
+													<xsd:element name="vcode" type="xsd:string" />
+													<xsd:element name="vchcode" type="xsd:string" />
+												</xsd:all>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="weather">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="forecast" maxOccurs="unbounded" minOccurs="0">
+														<xsd:complexType>
+															<xsd:all minOccurs="1" maxOccurs="1">
+																<xsd:element name="time" type="xsd:dateTime"/>
+																<xsd:element name="tod" type="xsd:int"/>
+																<xsd:element name="t" type="xsd:double"/>
+																<xsd:element name="p" type="xsd:double"/>
+																<xsd:element name="cl" type="xsd:int"/>
+																<xsd:element name="prc" type="xsd:double"/>
+																<xsd:element name="prct" type="xsd:int"/>
+																<xsd:element name="dd" type="xsd:double"/>
+																<xsd:element name="ff" type="xsd:double"/>
+																<xsd:element name="st" type="xsd:int"/>
+																<xsd:element name="humidity" type="xsd:short"/>
+															</xsd:all>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:all>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="errorText" type="xsd:string" />
+						</xsd:choice>
+						<xsd:attribute name="id" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string" />
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

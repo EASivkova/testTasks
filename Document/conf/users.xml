@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><users>
+	<user id="1">
+		<ivc>76</ivc>
+		<name>Кожевина Ангелина Германовна</name>
+		<code>К</code>
+		<login>Кожевина</login>
+		<password/>
+		<work_catalog>FR</work_catalog>
+	</user>
+	<user id="2">
+		<ivc>76</ivc>
+		<name>Охоткина Ксения Николаевна</name>
+		<code>О</code>
+		<login>Охоткина</login>
+		<password/>
+		<work_catalog>FR</work_catalog>
+	</user>
+	<user id="3">
+		<ivc>76</ivc>
+		<name>Паташова Елена Николаевна</name>
+		<code>П</code>
+		<login>Паташова</login>
+		<password/>
+		<work_catalog>FR</work_catalog>
+	</user>
+	<user id="4">
+		<ivc>76</ivc>
+		<name>Шиляева Анна Айдеровна</name>
+		<code>Ш</code>
+		<login>_Шиляева</login>
+		<password/>
+		<work_catalog>FR</work_catalog>
+	</user>
+	<user id="5">
+		<ivc>76</ivc>
+		<name>Тэйц Анна Александровна</name>
+		<code>Т</code>
+		<login>Тэйц</login>
+		<password/>
+		<work_catalog>АРМ Экономиста_Тэйц</work_catalog>
+	</user>
+</users>
